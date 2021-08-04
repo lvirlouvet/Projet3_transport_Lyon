@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_0071ef3815d64bb2b28697da23077ebe {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script src="https://rawcdn.githack.com/nezasa/iso8601-js-period/master/iso8601.min.js"></script>
+    <script src="https://rawcdn.githack.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_0071ef3815d64bb2b28697da23077ebe" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_0071ef3815d64bb2b28697da23077ebe = L.map(
+        'map_0071ef3815d64bb2b28697da23077ebe', {
+        center: [45.77016349207394, 4.862828581248771],
+        zoom: 13,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_39c8d6450b9e4e969c1ebac37eceadd6 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_0071ef3815d64bb2b28697da23077ebe);
+    
+            L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+                _getDisplayDateFormat: function(date){
+                    var newdate = new moment(date);
+                    console.log(newdate)
+                    return newdate.format("YYYY-MM-DD HH:mm:ss");
+                }
+            });
+            map_0071ef3815d64bb2b28697da23077ebe.timeDimension = L.timeDimension({period:"PT1M"});
+            var timeDimensionControl = new L.Control.TimeDimensionCustom({
+  "autoPlay": true,
+  "loopButton": false,
+  "maxSpeed": 10,
+  "minSpeed": 0.1,
+  "playerOptions": {
+    "loop": true,
+    "startOver": true,
+    "transitionTime": 200
+  },
+  "position": "bottomleft",
+  "timeSliderDragUpdate": false
+});
+            map_0071ef3815d64bb2b28697da23077ebe.addControl(this.timeDimensionControl);
+
+            console.log("");
+
+            var geoJsonLayer = L.geoJson({"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.862828581248771, 45.77016349207394], [4.859497367265485, 45.76691593355912]]}, "properties": {"times": ["2021-07-27T16:01:35", "2021-07-27T16:02:35"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.859497367265485, 45.76691593355912], [4.857238319547681, 45.76168293762747]]}, "properties": {"times": ["2021-07-27T16:02:35", "2021-07-27T16:03:50"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.857238319547681, 45.76168293762747], [4.846954650872559, 45.75368255951363]]}, "properties": {"times": ["2021-07-27T16:03:50", "2021-07-27T16:07:50"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.846954650872559, 45.75368255951363], [4.84247429605042, 45.746144351787635]]}, "properties": {"times": ["2021-07-27T16:07:50", "2021-07-27T16:08:50"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.84247429605042, 45.746144351787635], [4.837557611706456, 45.73781993155152]]}, "properties": {"times": ["2021-07-27T16:08:50", "2021-07-27 16:10:25"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.837557611706456, 45.73781993155152], [4.833923826440074, 45.731960104407335]]}, "properties": {"times": ["2021-07-27 16:10:25", "2021-07-27 16:11:55"], "style": {"color": "blue"}}}, {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[4.833923826440074, 45.731960104407335], [4.831337682020671, 45.72736405030933]]}, "properties": {"times": ["2021-07-27 16:11:55", "2021-07-27 16:13:40"], "style": {"color": "blue"}}}]}, {
+                    pointToLayer: function (feature, latLng) {
+                        if (feature.properties.icon == 'marker') {
+                            if(feature.properties.iconstyle){
+                                return new L.Marker(latLng, {
+                                    icon: L.icon(feature.properties.iconstyle)});
+                            }
+                            //else
+                            return new L.Marker(latLng);
+                        }
+                        if (feature.properties.icon == 'circle') {
+                            if (feature.properties.iconstyle) {
+                                return new L.circleMarker(latLng, feature.properties.iconstyle)
+                                };
+                            //else
+                            return new L.circleMarker(latLng);
+                        }
+                        //else
+
+                        return new L.Marker(latLng);
+                    },
+                    style: function (feature) {
+                        return feature.properties.style;
+                    },
+                    onEachFeature: function(feature, layer) {
+                        if (feature.properties.popup) {
+                        layer.bindPopup(feature.properties.popup);
+                        }
+                    }
+                })
+
+            var timestamped_geo_json_b988df0a808e49aca2836bb8688e5c1a = L.timeDimension.layer.geoJson(geoJsonLayer,
+                {updateTimeDimension: true,
+                 addlastPoint: true,
+                 duration: undefined,
+                }).addTo(map_0071ef3815d64bb2b28697da23077ebe);
+        
+</script>
